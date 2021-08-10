@@ -10,10 +10,15 @@ public class UserInterface {
     public void start() {
         Store store = new Store();
         System.out.println("Welcome to Java-Mart!\n" +
-                           "---------------------\n" + 
-                           "1 - Groceries \n" +
-                           "2 - Electronics\n" +
-                           "3 - Clothes");
+                            "...");
+        pause(1000);
+
+        User customer = loadCard();
+        
+        System.out.println("Department choice: \n" +
+                            "1 - Groceries\n" + 
+                            "2 - Electronics\n" +
+                            "3 - Clothing");
         
         int choice = checkChoice();
         
@@ -26,6 +31,27 @@ public class UserInterface {
         }
         
 
+    }
+
+    public User loadCard() {
+        System.out.println("How much would you like to load on your store card?");
+
+        int amount;
+        while (true) {
+            try {
+                System.out.print(": $");
+                amount = Integer.valueOf(reader.nextLine());
+                System.out.println("$" + amount + " has been loaded onto your card.\n" +
+                                    "...");
+                pause(1500);
+                break;
+            } catch (Exception e) {
+                System.out.println("Please enter whole dollar amount.");
+                continue;
+            }
+        }
+
+        return new User(amount);
     }
 
     public int checkChoice() {
@@ -45,6 +71,14 @@ public class UserInterface {
                 System.out.println("Enter 1, 2, or 3");
                 continue;
             }
+        }
+    }
+
+    public static void pause(int milliseconds) {               // Pause method to let the program have some flow
+        try {
+            Thread.sleep(milliseconds);
+        } catch (Exception e) {
+            Thread.currentThread().interrupt();
         }
     }
 }
