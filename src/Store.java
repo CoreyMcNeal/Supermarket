@@ -1,39 +1,67 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Store {
-    private List<Item> electronicsShelf;
-    private List<Item> groceriesShelf;
-    private List<Item> clothesShelf;
+
+    private Map<Item, Integer> electronicsShelf;
+    private Map<Item, Integer> groceriesShelf;
+    private Map<Item, Integer> clothesShelf;
+
 
     public Store() {
-        this.electronicsShelf = new ArrayList<>();
-        this.groceriesShelf = new ArrayList<>();
-        this.clothesShelf = new ArrayList<>();
+        this.electronicsShelf = new HashMap<>();
+        this.groceriesShelf = new HashMap<>();
+        this.clothesShelf = new HashMap<>();
+        generateClothes();
+        generateElectronics();
+        generateClothes();
     }
 
-    public List<Item> getElectronicsShelf() {
+
+    public Map<Item,Integer> getElectronicsShelf() {
         return this.electronicsShelf;
     }
 
-    public void setElectronicsShelf(List<Item> electronicsShelf) {
+    public void setElectronicsShelf(Map<Item,Integer> electronicsShelf) {
         this.electronicsShelf = electronicsShelf;
     }
 
-    public List<Item> getGroceriesShelf() {
+    public Map<Item,Integer> getGroceriesShelf() {
         return this.groceriesShelf;
     }
 
-    public void setGroceriesShelf(List<Item> groceriesShelf) {
+    public void setGroceriesShelf(Map<Item,Integer> groceriesShelf) {
         this.groceriesShelf = groceriesShelf;
     }
 
-    public List<Item> getClothesShelf() {
+    public Map<Item,Integer> getClothesShelf() {
         return this.clothesShelf;
     }
 
-    public void setClothesShelf(List<Item> clothesShelf) {
+    public void setClothesShelf(Map<Item,Integer> clothesShelf) {
         this.clothesShelf = clothesShelf;
+    }
+
+
+    public void generateElectronics() {
+        this.electronicsShelf.put(new Item("Samsung TV", 500), 3);
+        this.electronicsShelf.put(new Item("Xbox", 300), 2);
+        this.electronicsShelf.put(new Item("Playstation", 300), 2);
+        this.electronicsShelf.put(new Item("iPhone", 500), 1);
+    }
+
+    public void generateGroceries() {
+        this.groceriesShelf.put(new Item("Milk", 2), 4);
+        this.groceriesShelf.put(new Item("Bread", 2), 5);
+        this.groceriesShelf.put(new Item("Orange Juice", 1), 3);
+        this.groceriesShelf.put(new Item("Chips", 1), 3);
+    }
+
+    public void generateClothes() {
+        this.clothesShelf.put(new Item("T Shirt", 6), 2);
+        this.clothesShelf.put(new Item("Socks", 3), 2);
+        this.clothesShelf.put(new Item("Pants", 5), 2);
+        this.clothesShelf.put(new Item("Hat", 3), 2);
     }
 
 }
