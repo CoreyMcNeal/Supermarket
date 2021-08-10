@@ -18,7 +18,11 @@ public class UserInterface {
         int choice = checkChoice();
         
         if (choice == 1) {
-            
+            store.showGroceriesShelf();
+        } else if (choice == 2) {
+            store.showElectronicsShelf();
+        } else if (choice == 3) {
+            store.showClothesShelf();
         }
         
 
@@ -34,6 +38,7 @@ public class UserInterface {
                     System.out.println("Enter 1, 2, or 3");
                     continue;
                 }
+                System.out.println();
                 return choice;
 
             } catch (Exception e) {

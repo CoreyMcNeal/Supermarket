@@ -14,7 +14,39 @@ public class Store {
         this.clothesShelf = new HashMap<>();
         generateClothes();
         generateElectronics();
-        generateClothes();
+        generateGroceries();
+    }
+
+    public void showGroceriesShelf() {
+        for (Item entry: this.groceriesShelf.keySet()) {
+            System.out.println(entry.getItemName() + ": " +
+             this.groceriesShelf.get(entry) + spacer(entry) + "$" + entry.getPrice());
+        }
+    }
+
+    public void showElectronicsShelf() {
+        for (Item entry: this.electronicsShelf.keySet()) {
+            System.out.println(entry.getItemName() + ": " + 
+            this.electronicsShelf.get(entry) + spacer(entry) + "$" + entry.getPrice());
+        }
+    }
+
+    public void showClothesShelf() {
+        for (Item entry: this.clothesShelf.keySet()) {
+            System.out.println(entry.getItemName() + ": " + 
+            this.clothesShelf.get(entry) + spacer(entry) + "$" + entry.getPrice());
+        }
+    }
+
+    public String spacer(Item item) {
+        int intSpace = 18 - item.getItemName().length();
+
+        StringBuilder space = new StringBuilder();
+        for (int i = 0; i < intSpace; i++) {
+            space.append(" ");
+        }
+
+        return space.toString();
     }
 
 
