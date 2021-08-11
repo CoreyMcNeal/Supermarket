@@ -18,7 +18,9 @@ public class Cart {
             System.out.println("**Enter blank to finish**");
             System.out.print("Pick: ");
             String itemName = reader.nextLine();
-            if (!(validateName(itemName))) {                //loops if item name isn't found in store stock
+            if (itemName.isBlank()) {
+                return;
+            } else if (!(validateName(itemName))) {                //loops if item name isn't found in store stock
                 continue;
             }
 
@@ -41,6 +43,15 @@ public class Cart {
         }
     }
 
+    public int cartTotal() {
+        int sum = 0;
+        for (Item entry: this.itemsInCart.keySet()) {
+            sum += (entry.getPrice() * this.itemsInCart.get(entry));
+        }
+
+        return sum;
+    }
+
     public Map<Item,Integer> getItemsInCart() {
         return this.itemsInCart;
     }
@@ -61,9 +72,8 @@ public class Cart {
 
         this.store.getAllShelves().put(chosenItem, newStock);
         this.itemsInCart.put(chosenItem, amount);
-
-        System.out.println(this.itemsInCart);
-        System.out.println(this.store.getAllShelves());
+        System.out.println("Added " + amount + " " + itemName + " to cart\n" +
+                            "...");
     }
 
     public boolean validateName(String name) {

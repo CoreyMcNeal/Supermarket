@@ -22,7 +22,7 @@ public class Store {
     public void showGroceriesShelf() {
         for (Item entry: this.groceriesShelf.keySet()) {
             System.out.println(entry.getItemName() + ": " +
-             this.groceriesShelf.get(entry) + spacer(entry) + "$" + entry.getPrice());
+             this.allShelves.get(entry) + spacer(entry) + "$" + entry.getPrice());
         }
         System.out.println();
     }
@@ -30,7 +30,7 @@ public class Store {
     public void showElectronicsShelf() {
         for (Item entry: this.electronicsShelf.keySet()) {
             System.out.println(entry.getItemName() + ": " + 
-            this.electronicsShelf.get(entry) + spacer(entry) + "$" + entry.getPrice());
+            this.allShelves.get(entry) + spacer(entry) + "$" + entry.getPrice());
         }
         System.out.println();
     }
@@ -38,7 +38,7 @@ public class Store {
     public void showClothesShelf() {
         for (Item entry: this.clothesShelf.keySet()) {
             System.out.println(entry.getItemName() + ": " + 
-            this.clothesShelf.get(entry) + spacer(entry) + "$" + entry.getPrice());
+            this.allShelves.get(entry) + spacer(entry) + "$" + entry.getPrice());
         }
         System.out.println();
     }

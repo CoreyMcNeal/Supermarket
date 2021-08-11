@@ -14,4 +14,8 @@ public class User {
         this.balance = balance;
     }
 
+    public void checkout(Cart cart) {
+        //
+    }
+
 }

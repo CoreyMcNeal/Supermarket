@@ -16,23 +16,35 @@ public class UserInterface {
         User customer = loadCard();
         Cart cart = new Cart(this.reader,store);
 
-        System.out.println("Department choice: \n" +
+        while (true) {
+            System.out.println("Department choice: \n" +
                             "1 - Groceries\n" + 
                             "2 - Electronics\n" +
-                            "3 - Clothing");
+                            "3 - Clothing\n" +
+                            "4 - Checkout");
         
-        int choice = checkChoice();
-        
-        if (choice == 1) {
-            store.showGroceriesShelf();
-            cart.addToCart();
-        } else if (choice == 2) {
-            store.showElectronicsShelf();
-        } else if (choice == 3) {
-            store.showClothesShelf();
+            int choice = checkChoice();
+            
+            if (choice == 1) {
+                store.showGroceriesShelf();
+                cart.addToCart();
+                pause(2000);
+                continue;
+            } else if (choice == 2) {
+                store.showElectronicsShelf();
+                cart.addToCart();
+                pause(2000);
+                continue;
+            } else if (choice == 3) {
+                store.showClothesShelf();
+                cart.addToCart();
+                pause(2000);
+                continue;
+            } else if (choice ==4) {
+                customer.checkout(cart);
+                
+            }
         }
-        
-
     }
 
     public User loadCard() {
@@ -62,15 +74,15 @@ public class UserInterface {
             try {
                 System.out.print("Choice: ");
                 int choice = Integer.valueOf(reader.nextLine());
-                if (!(choice == 1) && !(choice == 2) && !(choice ==3)) {
-                    System.out.println("Enter 1, 2, or 3");
+                if (!(choice == 1) && !(choice == 2) && !(choice == 3) && !(choice == 4)) {
+                    System.out.println("Enter 1, 2, 3, or 4");
                     continue;
                 }
                 System.out.println();
                 return choice;
 
             } catch (Exception e) {
-                System.out.println("Enter 1, 2, or 3");
+                System.out.println("Enter 1, 2, 3, or 4");
                 continue;
             }
         }
