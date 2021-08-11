@@ -6,15 +6,17 @@ public class Store {
     private Map<Item, Integer> electronicsShelf;
     private Map<Item, Integer> groceriesShelf;
     private Map<Item, Integer> clothesShelf;
-
+    private Map<Item, Integer> allShelves;
 
     public Store() {
         this.electronicsShelf = new HashMap<>();
         this.groceriesShelf = new HashMap<>();
         this.clothesShelf = new HashMap<>();
+        this.allShelves = new HashMap<>();
         generateClothes();
         generateElectronics();
         generateGroceries();
+        generateAll();
     }
 
     public void showGroceriesShelf() {
@@ -22,6 +24,7 @@ public class Store {
             System.out.println(entry.getItemName() + ": " +
              this.groceriesShelf.get(entry) + spacer(entry) + "$" + entry.getPrice());
         }
+        System.out.println();
     }
 
     public void showElectronicsShelf() {
@@ -29,6 +32,7 @@ public class Store {
             System.out.println(entry.getItemName() + ": " + 
             this.electronicsShelf.get(entry) + spacer(entry) + "$" + entry.getPrice());
         }
+        System.out.println();
     }
 
     public void showClothesShelf() {
@@ -36,6 +40,7 @@ public class Store {
             System.out.println(entry.getItemName() + ": " + 
             this.clothesShelf.get(entry) + spacer(entry) + "$" + entry.getPrice());
         }
+        System.out.println();
     }
 
     public String spacer(Item item) {
@@ -75,6 +80,16 @@ public class Store {
     }
 
 
+    public Map<Item,Integer> getAllShelves() {
+        return this.allShelves;
+    }
+
+    public void setAllShelves(Map<Item,Integer> allShelves) {
+        this.allShelves = allShelves;
+    }
+
+
+
     public void generateElectronics() {
         this.electronicsShelf.put(new Item("Samsung TV", 500), 3);
         this.electronicsShelf.put(new Item("Xbox", 300), 2);
@@ -94,6 +109,12 @@ public class Store {
         this.clothesShelf.put(new Item("Socks", 3), 2);
         this.clothesShelf.put(new Item("Pants", 5), 2);
         this.clothesShelf.put(new Item("Hat", 3), 2);
+    }
+
+    public void generateAll() {
+        this.allShelves.putAll(this.clothesShelf);
+        this.allShelves.putAll(this.electronicsShelf);
+        this.allShelves.putAll(this.groceriesShelf);
     }
 
 }

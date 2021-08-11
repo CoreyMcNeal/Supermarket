@@ -14,7 +14,8 @@ public class UserInterface {
         pause(1000);
 
         User customer = loadCard();
-        
+        Cart cart = new Cart(this.reader,store);
+
         System.out.println("Department choice: \n" +
                             "1 - Groceries\n" + 
                             "2 - Electronics\n" +
@@ -24,6 +25,7 @@ public class UserInterface {
         
         if (choice == 1) {
             store.showGroceriesShelf();
+            cart.addToCart();
         } else if (choice == 2) {
             store.showElectronicsShelf();
         } else if (choice == 3) {
