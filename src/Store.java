@@ -22,7 +22,7 @@ public class Store {
     public void showGroceriesShelf() {
         for (Item entry: this.groceriesShelf.keySet()) {
             System.out.println(entry.getItemName() + ": " +
-             this.allShelves.get(entry) + spacer(entry) + "$" + entry.getPrice());
+            this.allShelves.get(entry) + spacer(entry) + "$" + entry.getPrice());
         }
         System.out.println();
     }

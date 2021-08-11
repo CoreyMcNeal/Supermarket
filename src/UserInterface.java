@@ -42,7 +42,10 @@ public class UserInterface {
                 continue;
             } else if (choice ==4) {
                 customer.checkout(cart);
-                
+
+                UserInterface.pause(1500);
+                System.out.println("Have a great day!");
+                break;
             }
         }
     }
@@ -65,7 +68,7 @@ public class UserInterface {
             }
         }
 
-        return new User(amount);
+        return new User(amount, this.reader);
     }
 
     public int checkChoice() {

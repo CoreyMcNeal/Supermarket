@@ -43,6 +43,23 @@ public class Cart {
         }
     }
 
+    public void removeFromCart(Item item) {
+        this.itemsInCart.put(item, this.itemsInCart.get(item) - 1);
+        this.store.getAllShelves().put(item, this.store.getAllShelves().get(item) + 1);
+        
+        if (this.itemsInCart.get(item) <= 0) {
+            this.itemsInCart.remove(item);
+        }
+    }
+
+    public void printCart() {
+        System.out.println("Cart Items: (Total is $" + this.cartTotal() + ")");
+        for (Item entry: this.itemsInCart.keySet()) {
+            System.out.println(entry.getItemName() + " Qty: " + this.itemsInCart.get(entry) + " $" + (this.itemsInCart.get(entry) * entry.getPrice()));
+        }
+        System.out.println();
+    }
+
     public int cartTotal() {
         int sum = 0;
         for (Item entry: this.itemsInCart.keySet()) {
@@ -61,12 +78,7 @@ public class Cart {
     }
 
     public void grabItem(String itemName, int amount) {
-        Item chosenItem = null;
-        for (Item entry: this.store.getAllShelves().keySet()) {
-            if (entry.getItemName().equals(itemName)) {
-                chosenItem = entry;
-            }
-        }
+        Item chosenItem = stringToItem(itemName);
 
         int newStock = this.store.getAllShelves().get(chosenItem) - amount;
 
@@ -87,12 +99,7 @@ public class Cart {
     }
 
     public boolean validateAmount(String name, int amount) {
-        Item product = null;
-        for (Item entry: this.store.getAllShelves().keySet()) {
-            if (entry.getItemName().equals(name)) {
-                product = entry;
-            }
-        }
+        Item product = stringToItem(name);
 
         if (this.store.getAllShelves().get(product) < amount) {
             System.out.println("Not enough in stock.\n");
@@ -102,4 +109,22 @@ public class Cart {
         return true;
     }
 
+    public Item stringToItem(String itemName) {
+        Item chosenItem = null;
+        while(true){
+
+            for (Item entry: this.store.getAllShelves().keySet()) {
+                if (entry.getItemName().equals(itemName)) {
+                    chosenItem = entry;
+                    return chosenItem;
+                }
+            }
+            
+            if (chosenItem == null) {
+                System.out.print("Item not on list, try again: ");
+                itemName = reader.nextLine();
+                continue;
+            }
+        }
+    }
 }
