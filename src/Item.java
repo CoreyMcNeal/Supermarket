@@ -23,4 +23,8 @@ public class Item {
         this.price = price;
     }
 
+    public String toString() {
+        return this.itemName + ": $" + this.price;
+    }
+
 }

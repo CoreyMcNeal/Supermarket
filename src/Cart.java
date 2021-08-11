@@ -90,7 +90,6 @@ public class Cart {
         }
 
         return true;
-        // eventually add the product and amount to shopping cart and also take it away from the stores map in addToCart()
     }
 
 }
